@@ -1,0 +1,30 @@
+{
+  "name": "immi",
+  "version": "1.0.0",
+  "description": "It's My Medical Information",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db_start": "sudo docker compose up -d",
+    "db_stop": "sudo docker compose down"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-openid-connect": "^2.17.1",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.2",
+    "npm": "^10.8.2",
+    "path": "^0.12.7",
+    "web3": "^4.11.1"
+  }
+}

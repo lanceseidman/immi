@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Dashboard</h1>
+        <p>Welcome, you are authenticated!</p>
+
+                <!-- Medical Information Form -->
+                 <H2>Physican Form - Patient Fill In Record</H2>
+                <form id="medicalForm">
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="medName" class="form-label">Medication Name</label>
+                        <input type="text" class="form-control" id="medName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mg" class="form-label">Dosage (mg)</label>
+                        <input type="number" class="form-control" id="mg" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="frequency" class="form-label">Frequency</label>
+                        <input type="text" class="form-control" id="frequency" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="prescriber" class="form-label">Prescriber</label>
+                        <input type="text" class="form-control" id="prescriber" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+        <a href="/logout" class="btn btn-danger">Logout</a>
+
+        <script>
+            document.getElementById('medicalForm').addEventListener('submit', async function(event) {
+                event.preventDefault();
+    
+                const auth0Id = 'auth0|12345'; 
+                const fullName = document.getElementById('fullName').value;
+                const medName = document.getElementById('medName').value;
+                const mg = document.getElementById('mg').value;
+                const frequency = document.getElementById('frequency').value;
+                const prescriber = document.getElementById('prescriber').value;
+    
+                const response = await fetch('/add-medical-record', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ auth0Id, fullName, medName, mg, frequency, prescriber })
+                });
+    
+                if (response.ok) {
+                    alert('Medical record added successfully!');
+                } else {
+                    alert('Failed to add medical record.');
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
